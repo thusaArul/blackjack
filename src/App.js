@@ -90,19 +90,19 @@ class App extends Component {
     }
 
     totalValues() {
-        let i = 0;
+        // let i = 0;
 
-        for (i = 0; i < this.state.dealersHand.length; i = i + 1) {
-            this.state.dealersHand[i].points = +this.state.dealersHand[i].points;
-            this.state.dealersTotal = this.state.dealersTotal + this.state.dealersHand[i].points;
-        }
-        console.log(this.state.dealersTotal)
+        // for (i = 0; i < this.state.dealersHand.length; i = i + 1) {
+        //     this.state.dealersHand[i].points = +this.state.dealersHand[i].points;
+        //     this.state.dealersTotal = this.state.dealersTotal + this.state.dealersHand[i].points;
+        // }
+        // console.log(this.state.dealersTotal)
 
-        for (i = 0; i < this.state.playersHand.length; i = i + 1) {
-            this.state.playersHand[i].points = +this.state.playersHand[i].points;
-            this.state.playersTotal = this.state.playersTotal + this.state.playersHand[i].points;
-        }
-        console.log(this.state.playersTotal)
+        // for (i = 0; i < this.state.playersHand.length; i = i + 1) {
+        //     this.state.playersHand[i].points = +this.state.playersHand[i].points;
+        //     this.state.playersTotal = this.state.playersTotal + this.state.playersHand[i].points;
+        // }
+        // console.log(this.state.playersTotal)
 
         this.setState(this.updateValues);
 
