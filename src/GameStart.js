@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
+import PlayersHand from './PlayersHand';
+import DealersHand from './DealersHand';
 
 class GameStart extends Component {
+    constructor() {
+        super();
+        this.state = {
+            playersHand: [],
+        }
+    }
+
     render() {
         return (
             <div>
-                <div className='flex'>
-                    <div id='dealersPile' className='piles'>
-                        {this.props.dealersHand.map((card, i) => {
-                            return <img src={card.image} alt={`A ${card.value} of ${card.suit}`} key={card.code} />
-                        })}
-                        <h3>Points: {this.props.dealersTotal}</h3>
-                    </div>
-                    <div id='playersPile' className='piles'>
-                        {this.props.playersHand.map((card, i) => {
-                            return <img src={card.image} alt={`A ${card.value} of ${card.suit}`} key={card.code} />
-                        })}
-                        <h3>Points: {this.props.playersTotal}</h3>
-                    </div>
-                </div>
-
-                <button onClick={() => { this.props.hit(this.props.deck_id);
-                // this.props.addCardtoHand(this.props.newCard);
-                }}>HIT</button>
-                <button>STAY</button>
+                <section className='flex'>
+                    <DealersHand deck_id={this.props.deck_id}/>
+                    <PlayersHand deck_id={this.props.deck_id} playersHand={this.state.playersHand}/>
+                </section>
             </div>
         );
     }

@@ -52,14 +52,14 @@ html {
     justify-content: center;
 }
 
-.piles{
+.game{
     width: 500px;
     height: 500px;
     border: 1px solid black;
 }
 
 img {
-    width: 100px;
-    height: 200px;
+    width: 25%;
 }
+
 
