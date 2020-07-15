@@ -12,22 +12,8 @@ class App extends Component {
             hide: true,
             show: false,
             deck_id: '',
-            // cardsInPlay: [],
-            // deal: [],
-            // playerNum: 2,
-            // drawnCards: [],
-            // remaining: 0,
-            // shuffled: null,
-            // turn: 0,
-            // dealersHand: [],
-            // playersHand: [],
-            // dealersTotal: 0,
-            // playersTotal: 0,
-            // newCard: []
         }
         this.hideNow = this.hideNow.bind(this);
-        // this.hit = this.hit.bind(this);
-        // this.updatePlayersHand = this.updatePlayersHand.bind(this);
     }
 
     hideNow() {
@@ -59,7 +45,6 @@ class App extends Component {
                 {this.state.hide ? (<button onClick={this.hideNow}>START GAME!</button>) : null}
 
                 {this.state.show ? <GameStart deck_id={this.state.deck_id}/> : null}
-
 
             </div>
         );

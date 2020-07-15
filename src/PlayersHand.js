@@ -7,6 +7,7 @@ class PlayersHand extends Component {
         this.state = {
             playersHand: [],
             playersTotal: 0,
+            bust: false,
         }
         this.hit = this.hit.bind(this);
     }
@@ -41,15 +42,31 @@ class PlayersHand extends Component {
                 if (this.state.playersTotal > 21) {
                     let i;
                     for (i = 0; i < this.state.playersHand.length; i = i + 1) {
-                        if (this.state.playersHand[i].points === '11') {
+                        if (this.state.playersHand[i].value === 'ACE') {
+                            let newValue = this.state.playersHand;
+                            newValue[i].value = 'ACE(worth 1 point)'
                             this.setState({
+                                playersHand: this.newValue,
                                 playersTotal: this.state.playersTotal - 10,
                             })
                         }
                     }
                 }
+            }).then((response) => {
+                if (this.state.playersTotal > 21) {
+                    this.setState({
+                        bust: true,
+                    })
+                }
+                if (this.state.playersTotal === 21) {
+                    this.stay();
+                }
             })
         }
+    }
+
+    stay() {
+        console.log('dealers turn')
     }
 
 
@@ -80,6 +97,20 @@ class PlayersHand extends Component {
                 this.setState({
                     playersTotal: this.state.playersTotal + +this.state.playersHand[i].points
                 })
+                if (this.state.playersTotal > 21) {
+                    let i;
+                    for (i = 0; i < this.state.playersHand.length; i = i + 1) {
+                        if (this.state.playersHand[i].points === '11') {
+                            this.setState({
+                                playersTotal: this.state.playersTotal - 10,
+                            })
+                        }
+                        return;
+                    }
+                }
+                if (this.state.playersTotal === 21) {
+                    this.stay()
+                }
             }
         });
     }
@@ -91,6 +122,7 @@ class PlayersHand extends Component {
 
                 <section className='game'>
                     <div id='playersPile'>
+
                         {this.state.playersHand.map((card, i) => {
                             return <img src={card.image} alt={`A ${card.value} of ${card.suit}`} key={card.code} />
                         })}
@@ -98,6 +130,9 @@ class PlayersHand extends Component {
 
                         <button onClick={this.hit}>HIT</button>
                         <button>STAY</button>
+
+                        {this.state.bust ? <h4>YOU BUST!!!</h4> : null}
+
                     </div>
                 </section>
             </div>
